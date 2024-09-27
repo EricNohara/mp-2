@@ -57,7 +57,7 @@ function App() {
 
   return (
     <div>
-      <h1>Wanted Persons Lookup</h1>
+      <h1>FBI Most Wanted Lookup</h1>
       <input
         type="text"
         id="office-input"

@@ -6,16 +6,15 @@ export interface WantedPerson {
   nationality: string | null;
   race: string | null;
   hair: string | null;
+  age_range: string | null;
   weight_max: number | null;
-  weight_min: number | null;
-  aliases: string[] | null;
   warning_message: string | null;
+  reward_text: string | null;
+  description: string | null;
   images: Image[];
 }
 
 export interface Image {
   original: string;
-  thumb: string;
-  caption: string | null;
-  large: string;
+  caption: string;
 }
