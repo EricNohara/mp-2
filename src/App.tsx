@@ -3,6 +3,15 @@ import { WantedPerson } from "./interfaces/WantedPersons";
 import { useState } from "react";
 import WantedPersonReport from "./components/WantedPersonReport";
 import validOffices from "./validOffices";
+import styled from "styled-components";
+
+const WantedPersonsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  width: 80%;
+  margin: auto;
+`;
 
 // fetcher function which is basically a wrapper on the fetch function to be used with useSWR
 const fetcher = async function (url: string): Promise<WantedPerson[]> {
@@ -76,7 +85,7 @@ function App() {
         </ul>
       )}
       <button onClick={handleSubmit}>Search</button>
-      <ul>
+      <WantedPersonsContainer>
         {data.length > 0 ? (
           data.map((person) => (
             <WantedPersonReport key={person.uid} person={person} />
@@ -84,7 +93,7 @@ function App() {
         ) : (
           <p>No results found for this office.</p>
         )}
-      </ul>
+      </WantedPersonsContainer>
     </div>
   );
 }

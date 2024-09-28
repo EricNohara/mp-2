@@ -12,6 +12,8 @@ export interface WantedPerson {
   reward_text: string | null;
   description: string | null;
   images: Image[];
+  url: string;
+  place_of_birth: string | null;
 }
 
 export interface Image {
