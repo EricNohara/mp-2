@@ -4,10 +4,15 @@ import styled from "styled-components";
 const WantedPersonDiv = styled.div`
   display: flex;
   width: 100%;
+  padding: 2%;
   align-items: center;
 
   &:first-child {
     margin-top: 5%;
+  }
+
+  &:last-child {
+    margin-bottom: 5%;
   }
 `;
 
@@ -20,17 +25,17 @@ const PersonInfoDiv = styled.div`
 
 const PersonSpecsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 50%);
+  grid-template-columns: 20% 30% 20% 30%;
   margin: 2% 0;
 `;
 
 const WarningMessage = styled.p`
   font-weight: bold;
-  color: red;
+  color: #f88379;
 `;
 
 const RewardMessage = styled.p`
-  color: green;
+  color: #c1e899;
 `;
 
 const WantedImage = styled.img`
@@ -83,15 +88,22 @@ export default function WantedPersonReport(props: { person: WantedPerson }) {
           <PersonTitle>{props.person.title}</PersonTitle>
           <i>{formatSpecialMsg(props.person.description).toLowerCase()}</i>
           <PersonSpecsGrid>
-            <p>Sex: {formatInfo(props.person.sex)}</p>
-            <p>Race: {formatInfo(props.person.race)}</p>
-            <p>Age: {formatInfo(props.person.age_range)}</p>
-            <p>Nationality: {formatInfo(props.person.nationality)}</p>
-            <p>Birthplace: {formatInfo(props.person.place_of_birth)}</p>
-            <p>Hair Color: {formatInfo(props.person.hair)}</p>
-            <p>Eye Color: {formatInfo(props.person.eyes)}</p>
+            <p>Sex:</p>
+            <p>{formatInfo(props.person.sex)}</p>
+            <p>Race:</p>
+            <p>{formatInfo(props.person.race)}</p>
+            <p>Age:</p>
+            <p>{formatInfo(props.person.age_range)}</p>
+            <p>Nationality:</p>
+            <p>{formatInfo(props.person.nationality)}</p>
+            <p>Birthplace:</p>
+            <p>{formatInfo(props.person.place_of_birth)}</p>
+            <p>Hair Color:</p>
+            <p>{formatInfo(props.person.hair)}</p>
+            <p>Eye Color:</p>
+            <p>{formatInfo(props.person.eyes)}</p>
+            <p>Weight:</p>
             <p>
-              Weight:{" "}
               {formatNumberInfo(props.person.weight_max) !== "UNCERTAIN"
                 ? formatNumberInfo(props.person.weight_max) + "lbs"
                 : "UNCERTAIN"}
