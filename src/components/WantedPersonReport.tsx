@@ -14,6 +14,10 @@ const WantedPersonDiv = styled.div`
   &:last-child {
     margin-bottom: 5%;
   }
+
+  @media screen and (max-width: 850px) {
+    flex-direction: column;
+  }
 `;
 
 const PersonInfoDiv = styled.div`
@@ -21,21 +25,30 @@ const PersonInfoDiv = styled.div`
   flex-direction: column;
   width: 100%;
   padding-left: 5%;
+  overflow-x: hidden;
+  min-width: 300px;
+  @media screen and (max-width: 650px) {
+    font-size: 0.75rem;
+  }
 `;
 
 const PersonSpecsGrid = styled.div`
   display: grid;
-  grid-template-columns: 20% 30% 20% 30%;
+  grid-template-columns: repeat(4, 25%);
+  gap: 1%;
   margin: 2% 0;
+  text-overflow: none;
 `;
 
 const WarningMessage = styled.p`
   font-weight: bold;
   color: #f88379;
+  margin-bottom: 2%;
 `;
 
 const RewardMessage = styled.p`
   color: #c1e899;
+  margin-bottom: 2%;
 `;
 
 const WantedImage = styled.img`
@@ -54,10 +67,20 @@ const WantedImage = styled.img`
     filter: none;
     transition: 0.3s ease;
   }
+
+  @media screen and (max-width: 850px) {
+    margin-bottom: 5%;
+    height: 150px;
+    width: 150px;
+  }
 `;
 
 const PersonTitle = styled.h2`
   margin-bottom: 2%;
+
+  @media screen and (max-width: 650px) {
+    font-size: 1rem;
+  }
 `;
 
 function formatInfo(info: string | null): string {
@@ -94,13 +117,13 @@ export default function WantedPersonReport(props: { person: WantedPerson }) {
             <p>{formatInfo(props.person.race)}</p>
             <p>Age:</p>
             <p>{formatInfo(props.person.age_range)}</p>
-            <p>Nationality:</p>
+            <p>Nation:</p>
             <p>{formatInfo(props.person.nationality)}</p>
-            <p>Birthplace:</p>
+            <p>Birth:</p>
             <p>{formatInfo(props.person.place_of_birth)}</p>
-            <p>Hair Color:</p>
+            <p>Hair:</p>
             <p>{formatInfo(props.person.hair)}</p>
-            <p>Eye Color:</p>
+            <p>Eye:</p>
             <p>{formatInfo(props.person.eyes)}</p>
             <p>Weight:</p>
             <p>

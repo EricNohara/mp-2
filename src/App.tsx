@@ -39,12 +39,20 @@ const SuggestionItem = styled.li`
   &:hover {
     background-color: #004a77;
   }
+
+  @media screen and (max-width: 650px) {
+    font-size: 0.8rem !important;
+  }
 `;
 
 const Title = styled.h1`
   text-align: center;
   font-size: 3rem;
   margin: 6% 0 4% 0;
+
+  @media screen and (max-width: 650px) {
+    font-size: 2rem;
+  }
 `;
 
 const SearchContainer = styled.div`
@@ -72,6 +80,10 @@ const SearchInput = styled.input`
     box-shadow: 2px 2px 10px rgba(0, 123, 255, 0.5);
     outline: none;
   }
+
+  @media screen and (max-width: 650px) {
+    font-size: 0.8rem !important;
+  }
 `;
 
 const SearchButton = styled.button`
@@ -94,6 +106,10 @@ const SearchButton = styled.button`
     outline: none;
     box-shadow: 2px 2px 10px rgba(0, 123, 255, 0.5);
   }
+
+  @media screen and (max-width: 650px) {
+    font-size: 0.8rem !important;
+  }
 `;
 
 const CopyrightFooter = styled.footer`
@@ -104,11 +120,19 @@ const CopyrightFooter = styled.footer`
   background-color: #004a77;
   color: white;
   flex-shrink: 0;
+
+  @media screen and (max-width: 650px) {
+    font-size: 0.8rem !important;
+  }
 `;
 
 const NoResultsMessage = styled.p`
   text-align: center;
   margin-top: 5%;
+
+  @media screen and (max-width: 650px) {
+    font-size: 0.8rem !important;
+  }
 `;
 
 // fetcher function which is basically a wrapper on the fetch function to be used with useSWR
@@ -177,7 +201,9 @@ function App() {
             placeholder="Enter field office"
             autoComplete="off"
           />
-          <SearchButton onClick={handleSubmit}>Search</SearchButton>
+          <SearchButton onClick={handleSubmit}>
+            <span className="material-symbols-outlined">search</span>
+          </SearchButton>
           {suggestions.length > 0 && (
             <SuggestionsList className="suggestions">
               {suggestions.map((suggestion, index) => (
