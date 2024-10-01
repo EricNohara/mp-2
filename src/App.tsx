@@ -63,7 +63,8 @@ const fetcher = async function (url: string): Promise<WantedPerson[]> {
     const data = await res.json();
     return data.items as WantedPerson[];
   } catch (err) {
-    throw new Error(err);
+    console.error(err);
+    throw new Error("Error fetching data");
   }
 };
 
