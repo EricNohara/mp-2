@@ -1,4 +1,4 @@
-import { WantedPerson } from "../interfaces/WantedPersons";
+import WantedPerson from "../interfaces/WantedPersons";
 import styled from "styled-components";
 
 const WantedPersonDiv = styled.div`

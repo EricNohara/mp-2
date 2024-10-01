@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import { WantedPerson } from "./interfaces/WantedPersons";
+import WantedPerson from "./interfaces/WantedPersons";
 import { useState } from "react";
 import WantedPersonReport from "./components/WantedPersonReport";
 import validOffices from "./validOffices";
@@ -58,13 +58,12 @@ const NoResultsMessage = styled.p`
 
 // fetcher function which is basically a wrapper on the fetch function to be used with useSWR
 const fetcher = async function (url: string): Promise<WantedPerson[]> {
-  const res: Response = await fetch(url);
-
-  if (!res.ok) {
-    throw new Error("Error fetching data");
-  } else {
+  try {
+    const res: Response = await fetch(url);
     const data = await res.json();
     return data.items as WantedPerson[];
+  } catch (err) {
+    throw new Error(err);
   }
 };
 

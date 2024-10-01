@@ -1,4 +1,4 @@
-export interface WantedPerson {
+export default interface WantedPerson {
   title: string;
   uid: string;
   sex: string | null;
@@ -16,7 +16,7 @@ export interface WantedPerson {
   place_of_birth: string | null;
 }
 
-export interface Image {
+interface Image {
   original: string;
   caption: string;
 }
