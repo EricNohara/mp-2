@@ -81,7 +81,7 @@ function App() {
 
   // check for loading state or errors
   if (!data) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
+  if (error) return <div>Error: {(error as Error).message}</div>;
 
   return (
     <>
