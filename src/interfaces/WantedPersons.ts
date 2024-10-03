@@ -1,4 +1,5 @@
 export default interface WantedPerson {
+  // fields in response from FBI API and used by WanterPersonReport component to show info
   title: string;
   uid: string;
   sex: string | null;

@@ -1,6 +1,9 @@
+import { info } from "console";
 import WantedPerson from "../interfaces/WantedPersons";
 import styled from "styled-components";
+import { format } from "path";
 
+// styled components used to style the wanted person fields
 const WantedPersonDiv = styled.div`
   display: flex;
   width: 100%;
@@ -83,17 +86,15 @@ const PersonTitle = styled.h2`
   }
 `;
 
-function formatInfo(info: string | null): string {
-  return info ? info.toUpperCase() : "UNCERTAIN";
+// helper function which returns placeholder if the fetched data has NULL as a field
+function formatInfo(info: string | null, placeholder: string): string {
+  return info ? info.toUpperCase() : placeholder;
 }
 
-function formatSpecialMsg(info: string | null): string {
-  return info ? info.toUpperCase() : "";
-}
-
+// helper function to handle number info and convert it to string
 function formatNumberInfo(numInfo: number | null): string {
   const infoStr: string | null = numInfo ? String(numInfo) : null;
-  return infoStr ? infoStr.toUpperCase() : "UNCERTAIN";
+  return formatInfo(infoStr, "UNCERTAIN");
 }
 
 export default function WantedPersonReport(props: { person: WantedPerson }) {
@@ -109,22 +110,22 @@ export default function WantedPersonReport(props: { person: WantedPerson }) {
         </a>
         <PersonInfoDiv>
           <PersonTitle>{props.person.title}</PersonTitle>
-          <i>{formatSpecialMsg(props.person.description).toLowerCase()}</i>
+          <i>{formatInfo(props.person.description, "").toLowerCase()}</i>
           <PersonSpecsGrid>
             <p>Sex:</p>
-            <p>{formatInfo(props.person.sex)}</p>
+            <p>{formatInfo(props.person.sex, "UNCERTAIN")}</p>
             <p>Race:</p>
-            <p>{formatInfo(props.person.race)}</p>
+            <p>{formatInfo(props.person.race, "UNCERTAIN")}</p>
             <p>Age:</p>
-            <p>{formatInfo(props.person.age_range)}</p>
+            <p>{formatInfo(props.person.age_range, "UNCERTAIN")}</p>
             <p>Nation:</p>
-            <p>{formatInfo(props.person.nationality)}</p>
+            <p>{formatInfo(props.person.nationality, "UNCERTAIN")}</p>
             <p>Birth:</p>
-            <p>{formatInfo(props.person.place_of_birth)}</p>
+            <p>{formatInfo(props.person.place_of_birth, "UNCERTAIN")}</p>
             <p>Hair:</p>
-            <p>{formatInfo(props.person.hair)}</p>
+            <p>{formatInfo(props.person.hair, "UNCERTAIN")}</p>
             <p>Eye:</p>
-            <p>{formatInfo(props.person.eyes)}</p>
+            <p>{formatInfo(props.person.eyes, "UNCERTAIN")}</p>
             <p>Weight:</p>
             <p>
               {formatNumberInfo(props.person.weight_max) !== "UNCERTAIN"
@@ -133,10 +134,10 @@ export default function WantedPersonReport(props: { person: WantedPerson }) {
             </p>
           </PersonSpecsGrid>
           <WarningMessage>
-            {formatSpecialMsg(props.person.warning_message)}
+            {formatInfo(props.person.warning_message, "")}
           </WarningMessage>
           <RewardMessage>
-            {formatSpecialMsg(props.person.reward_text)}
+            {formatInfo(props.person.reward_text, "")}
           </RewardMessage>
         </PersonInfoDiv>
       </WantedPersonDiv>

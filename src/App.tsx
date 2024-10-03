@@ -6,6 +6,7 @@ import validOffices from "./validOffices";
 import styled from "styled-components";
 import SearchBar from "./components/SearchBar";
 
+// styled components used to style the wanted person report
 const WantedPersonReportContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -69,11 +70,11 @@ const fetcher = async function (url: string): Promise<WantedPerson[]> {
 };
 
 function App() {
-  const [officeStr, setOfficeStr] = useState<string>("");
-  const [inputStr, setInputStr] = useState<string>("");
-  const [suggestions, setSuggestions] = useState<string[]>(validOffices);
+  const [officeStr, setOfficeStr] = useState<string>(""); // used to search for different offices based on input
+  const [inputStr, setInputStr] = useState<string>(""); // used by SearchBar component, doesnt reload page when changed
+  const [suggestions, setSuggestions] = useState<string[]>(validOffices); // used by SearchBar - it is an array of offices
 
-  // fetch data
+  // fetch data based on office selected
   const { data, error } = useSWR(
     `https://api.fbi.gov/wanted/v1/list?field_offices=${officeStr.toLowerCase()}`,
     fetcher

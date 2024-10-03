@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import validOffices from "../validOffices";
 
+// styled components used to style the search bar and suggestion list
 const SearchContainer = styled.div`
   display: grid;
   grid-template-columns: 70% 28%;
@@ -89,6 +90,7 @@ interface SearchBarProps {
   setSuggestions: (suggestions: string[]) => void;
 }
 
+// SearchBar component which takes in the search bar props
 const SearchBar: React.FC<SearchBarProps> = ({
   setOfficeStr,
   inputStr,
@@ -96,26 +98,30 @@ const SearchBar: React.FC<SearchBarProps> = ({
   suggestions,
   setSuggestions,
 }) => {
+  // used when the input value is changed - changes the suggestions and input string state variables in the parent component
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const input: string = e.target.value;
 
     if (input.length > 0) {
+      // filter only offices that contains the query string
       const filteredOffices: string[] = validOffices.filter((office) =>
         office.toLowerCase().includes(input.toLowerCase())
       );
-      setSuggestions(filteredOffices);
+      setSuggestions(filteredOffices); // set the suggestions to the filtered offices
     } else {
-      setSuggestions(validOffices);
+      setSuggestions(validOffices); // if there is no query, display all suggestions
     }
-    setInputStr(input);
+    setInputStr(input); // change the value of the input string
   };
 
+  // used when a suggestion is clicked - input and office string is set to that value and page is reloaded with content
   const handleSuggestionClick = (suggestion: string) => {
     setInputStr(suggestion);
     setSuggestions([]);
-    setOfficeStr(suggestion); // Automatically set the office string
+    setOfficeStr(suggestion); // set the office string
   };
 
+  // used when the search button is clicked - reload page with content and clear suggestions list
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setSuggestions([]);
