@@ -1,7 +1,5 @@
-import { info } from "console";
 import WantedPerson from "../interfaces/WantedPersons";
 import styled from "styled-components";
-import { format } from "path";
 
 // styled components used to style the wanted person fields
 const WantedPersonDiv = styled.div`
